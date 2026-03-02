@@ -1,0 +1,289 @@
+{
+  "$schema": "https://tree-sitter.github.io/tree-sitter/assets/schemas/grammar.schema.json",
+  "name": "pta",
+  "rules": {
+    "source_file": {
+      "type": "REPEAT",
+      "content": {
+        "type": "CHOICE",
+        "members": [
+          {
+            "type": "SYMBOL",
+            "name": "transaction"
+          },
+          {
+            "type": "SYMBOL",
+            "name": "comment"
+          },
+          {
+            "type": "STRING",
+            "value": "\n"
+          }
+        ]
+      }
+    },
+    "comment": {
+      "type": "TOKEN",
+      "content": {
+        "type": "SEQ",
+        "members": [
+          {
+            "type": "PATTERN",
+            "value": "[#;]"
+          },
+          {
+            "type": "PATTERN",
+            "value": "[^\\n]*"
+          }
+        ]
+      }
+    },
+    "transaction": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "SYMBOL",
+          "name": "header"
+        },
+        {
+          "type": "REPEAT1",
+          "content": {
+            "type": "SYMBOL",
+            "name": "movement"
+          }
+        }
+      ]
+    },
+    "header": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "SYMBOL",
+          "name": "date"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "_sp"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "flag"
+        },
+        {
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "SEQ",
+              "members": [
+                {
+                  "type": "SYMBOL",
+                  "name": "_sp"
+                },
+                {
+                  "type": "SYMBOL",
+                  "name": "payee"
+                }
+              ]
+            },
+            {
+              "type": "BLANK"
+            }
+          ]
+        },
+        {
+          "type": "STRING",
+          "value": "\n"
+        }
+      ]
+    },
+    "_sp": {
+      "type": "PATTERN",
+      "value": " +"
+    },
+    "date": {
+      "type": "PATTERN",
+      "value": "\\d{4}-\\d{2}-\\d{2}"
+    },
+    "flag": {
+      "type": "CHOICE",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "*"
+        },
+        {
+          "type": "STRING",
+          "value": "!"
+        }
+      ]
+    },
+    "payee": {
+      "type": "PATTERN",
+      "value": "[^\\n]+"
+    },
+    "movement": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "SYMBOL",
+          "name": "_sp"
+        },
+        {
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "SYMBOL",
+              "name": "linked_prefix"
+            },
+            {
+              "type": "BLANK"
+            }
+          ]
+        },
+        {
+          "type": "FIELD",
+          "name": "from",
+          "content": {
+            "type": "SYMBOL",
+            "name": "account"
+          }
+        },
+        {
+          "type": "SYMBOL",
+          "name": "_sp"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "arrow"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "_sp"
+        },
+        {
+          "type": "FIELD",
+          "name": "to",
+          "content": {
+            "type": "SYMBOL",
+            "name": "account"
+          }
+        },
+        {
+          "type": "REPEAT",
+          "content": {
+            "type": "SEQ",
+            "members": [
+              {
+                "type": "SYMBOL",
+                "name": "_sp"
+              },
+              {
+                "type": "SYMBOL",
+                "name": "word"
+              }
+            ]
+          }
+        },
+        {
+          "type": "SYMBOL",
+          "name": "_sp"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "amount"
+        },
+        {
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "SEQ",
+              "members": [
+                {
+                  "type": "SYMBOL",
+                  "name": "_sp"
+                },
+                {
+                  "type": "SYMBOL",
+                  "name": "commodity"
+                }
+              ]
+            },
+            {
+              "type": "BLANK"
+            }
+          ]
+        },
+        {
+          "type": "STRING",
+          "value": "\n"
+        }
+      ]
+    },
+    "linked_prefix": {
+      "type": "STRING",
+      "value": "+"
+    },
+    "account": {
+      "type": "PATTERN",
+      "value": "[A-Z][a-zA-Z0-9]*(:[A-Za-z][a-zA-Z0-9]*)+"
+    },
+    "arrow": {
+      "type": "CHOICE",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "->"
+        },
+        {
+          "type": "STRING",
+          "value": "//"
+        },
+        {
+          "type": "STRING",
+          "value": "→"
+        },
+        {
+          "type": "STRING",
+          "value": ">"
+        }
+      ]
+    },
+    "word": {
+      "type": "TOKEN",
+      "content": {
+        "type": "PREC",
+        "value": -1,
+        "content": {
+          "type": "PATTERN",
+          "value": "[a-zA-Z][a-zA-Z0-9]*"
+        }
+      }
+    },
+    "amount": {
+      "type": "PATTERN",
+      "value": "-?[0-9][0-9,]*(\\.[0-9]+)?"
+    },
+    "commodity": {
+      "type": "TOKEN",
+      "content": {
+        "type": "PREC",
+        "value": 1,
+        "content": {
+          "type": "PATTERN",
+          "value": "[A-Z][A-Z]+"
+        }
+      }
+    }
+  },
+  "extras": [
+    {
+      "type": "PATTERN",
+      "value": "\\r"
+    }
+  ],
+  "conflicts": [],
+  "precedences": [],
+  "externals": [],
+  "inline": [],
+  "supertypes": []
+}

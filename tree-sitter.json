@@ -1,0 +1,30 @@
+{
+  "grammars": [
+    {
+      "name": "pta",
+      "camelcase": "Pta",
+      "scope": "source.pta",
+      "path": ".",
+      "file-types": [
+        "pta"
+      ],
+      "highlights": "queries/highlights.scm"
+    }
+  ],
+  "metadata": {
+    "version": "0.1.0",
+    "license": "MIT",
+    "description": "Tree-sitter grammar for PTA (Plain Text Accounting) files",
+    "links": {
+      "repository": "https://github.com/drummonds/tree-sitter-pta.git"
+    }
+  },
+  "bindings": {
+    "c": true,
+    "go": true,
+    "node": true,
+    "python": true,
+    "rust": true,
+    "swift": true
+  }
+}

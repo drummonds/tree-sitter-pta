@@ -1,0 +1,191 @@
+===
+Simple transaction
+===
+
+2024-01-15 * Salary deposit
+  Income:Salary -> Asset:Bank salary payment 5000.00 GBP
+
+---
+
+(source_file
+  (transaction
+    (header
+      (date)
+      (flag)
+      (payee))
+    (movement
+      from: (account)
+      (arrow)
+      to: (account)
+      (word)
+      (word)
+      (amount)
+      (commodity))))
+
+===
+Transaction without description
+===
+
+2024-01-20 * Pay rent
+  Asset:Bank -> Expense:Rent 1200.00 GBP
+
+---
+
+(source_file
+  (transaction
+    (header
+      (date)
+      (flag)
+      (payee))
+    (movement
+      from: (account)
+      (arrow)
+      to: (account)
+      (amount)
+      (commodity))))
+
+===
+Transaction without commodity
+===
+
+2024-01-25 * Loan repayment
+  Asset:Bank -> Liability:Mortgage 800.00
+
+---
+
+(source_file
+  (transaction
+    (header
+      (date)
+      (flag)
+      (payee))
+    (movement
+      from: (account)
+      (arrow)
+      to: (account)
+      (amount))))
+
+===
+Multi-leg transaction with linked prefix
+===
+
+2024-02-01 * Multi-leg payroll
+  +Income:Salary -> Asset:Bank net salary 4000.00 GBP
+  +Income:Salary -> Expense:Tax income tax 1000.00 GBP
+
+---
+
+(source_file
+  (transaction
+    (header
+      (date)
+      (flag)
+      (payee))
+    (movement
+      (linked_prefix)
+      from: (account)
+      (arrow)
+      to: (account)
+      (word)
+      (word)
+      (amount)
+      (commodity))
+    (movement
+      (linked_prefix)
+      from: (account)
+      (arrow)
+      to: (account)
+      (word)
+      (word)
+      (amount)
+      (commodity))))
+
+===
+Pending transaction
+===
+
+2024-03-01 ! Pending payment
+  Asset:Bank -> Expense:Food 50.00 GBP
+
+---
+
+(source_file
+  (transaction
+    (header
+      (date)
+      (flag)
+      (payee))
+    (movement
+      from: (account)
+      (arrow)
+      to: (account)
+      (amount)
+      (commodity))))
+
+===
+Header without payee
+===
+
+2024-04-01 *
+  Asset:Bank -> Expense:Misc 10.00
+
+---
+
+(source_file
+  (transaction
+    (header
+      (date)
+      (flag))
+    (movement
+      from: (account)
+      (arrow)
+      to: (account)
+      (amount))))
+
+===
+Comment lines
+===
+
+# This is a comment
+; This is also a comment
+
+---
+
+(source_file
+  (comment)
+  (comment))
+
+===
+Multiple transactions
+===
+
+2024-01-15 * First
+  Income:Salary -> Asset:Bank 5000.00 GBP
+
+2024-01-20 * Second
+  Asset:Bank -> Expense:Rent 1200.00
+
+---
+
+(source_file
+  (transaction
+    (header
+      (date)
+      (flag)
+      (payee))
+    (movement
+      from: (account)
+      (arrow)
+      to: (account)
+      (amount)
+      (commodity)))
+  (transaction
+    (header
+      (date)
+      (flag)
+      (payee))
+    (movement
+      from: (account)
+      (arrow)
+      to: (account)
+      (amount))))

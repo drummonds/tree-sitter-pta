@@ -1,0 +1,83 @@
+===
+Dash arrow
+===
+
+2024-01-01 * Test
+  Asset:Bank -> Expense:Food 100.00
+
+---
+
+(source_file
+  (transaction
+    (header
+      (date)
+      (flag)
+      (payee))
+    (movement
+      from: (account)
+      (arrow)
+      to: (account)
+      (amount))))
+
+===
+Double slash arrow
+===
+
+2024-01-01 * Test
+  Asset:Bank // Expense:Food 100.00
+
+---
+
+(source_file
+  (transaction
+    (header
+      (date)
+      (flag)
+      (payee))
+    (movement
+      from: (account)
+      (arrow)
+      to: (account)
+      (amount))))
+
+===
+Unicode arrow
+===
+
+2024-01-01 * Test
+  Asset:Bank → Expense:Food 100.00
+
+---
+
+(source_file
+  (transaction
+    (header
+      (date)
+      (flag)
+      (payee))
+    (movement
+      from: (account)
+      (arrow)
+      to: (account)
+      (amount))))
+
+===
+Greater-than arrow
+===
+
+2024-01-01 * Test
+  Asset:Bank > Expense:Food 100.00
+
+---
+
+(source_file
+  (transaction
+    (header
+      (date)
+      (flag)
+      (payee))
+    (movement
+      from: (account)
+      (arrow)
+      to: (account)
+      (amount))))

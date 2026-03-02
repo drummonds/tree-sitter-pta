@@ -1,0 +1,23 @@
+{
+  "name": "tree-sitter-pta",
+  "version": "0.1.0",
+  "description": "Tree-sitter grammar for PTA (Plain Text Accounting) files",
+  "main": "bindings/node",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/drummonds/tree-sitter-pta.git"
+  },
+  "license": "MIT",
+  "keywords": [
+    "tree-sitter",
+    "parser",
+    "pta",
+    "accounting"
+  ],
+  "dependencies": {
+    "nan": "^2.18.0"
+  },
+  "devDependencies": {
+    "tree-sitter-cli": "^0.24.7"
+  }
+}

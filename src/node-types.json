@@ -1,0 +1,186 @@
+[
+  {
+    "type": "arrow",
+    "named": true,
+    "fields": {}
+  },
+  {
+    "type": "flag",
+    "named": true,
+    "fields": {}
+  },
+  {
+    "type": "header",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "date",
+          "named": true
+        },
+        {
+          "type": "flag",
+          "named": true
+        },
+        {
+          "type": "payee",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "movement",
+    "named": true,
+    "fields": {
+      "from": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "account",
+            "named": true
+          }
+        ]
+      },
+      "to": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "account",
+            "named": true
+          }
+        ]
+      }
+    },
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "amount",
+          "named": true
+        },
+        {
+          "type": "arrow",
+          "named": true
+        },
+        {
+          "type": "commodity",
+          "named": true
+        },
+        {
+          "type": "linked_prefix",
+          "named": true
+        },
+        {
+          "type": "word",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "source_file",
+    "named": true,
+    "root": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": false,
+      "types": [
+        {
+          "type": "comment",
+          "named": true
+        },
+        {
+          "type": "transaction",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "transaction",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "header",
+          "named": true
+        },
+        {
+          "type": "movement",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "\n",
+    "named": false
+  },
+  {
+    "type": "!",
+    "named": false
+  },
+  {
+    "type": "*",
+    "named": false
+  },
+  {
+    "type": "->",
+    "named": false
+  },
+  {
+    "type": "//",
+    "named": false
+  },
+  {
+    "type": ">",
+    "named": false
+  },
+  {
+    "type": "account",
+    "named": true
+  },
+  {
+    "type": "amount",
+    "named": true
+  },
+  {
+    "type": "comment",
+    "named": true
+  },
+  {
+    "type": "commodity",
+    "named": true
+  },
+  {
+    "type": "date",
+    "named": true
+  },
+  {
+    "type": "linked_prefix",
+    "named": true
+  },
+  {
+    "type": "payee",
+    "named": true
+  },
+  {
+    "type": "word",
+    "named": true
+  },
+  {
+    "type": "→",
+    "named": false
+  }
+]

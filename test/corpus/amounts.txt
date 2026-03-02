@@ -1,0 +1,64 @@
+===
+Amount with comma separators
+===
+
+2024-01-01 * Test
+  Asset:Bank -> Expense:House 1,200,000.00 GBP
+
+---
+
+(source_file
+  (transaction
+    (header
+      (date)
+      (flag)
+      (payee))
+    (movement
+      from: (account)
+      (arrow)
+      to: (account)
+      (amount)
+      (commodity))))
+
+===
+Negative amount
+===
+
+2024-01-01 * Test
+  Asset:Bank -> Expense:Refund -50.00 GBP
+
+---
+
+(source_file
+  (transaction
+    (header
+      (date)
+      (flag)
+      (payee))
+    (movement
+      from: (account)
+      (arrow)
+      to: (account)
+      (amount)
+      (commodity))))
+
+===
+Integer amount
+===
+
+2024-01-01 * Test
+  Asset:Bank -> Expense:Food 100
+
+---
+
+(source_file
+  (transaction
+    (header
+      (date)
+      (flag)
+      (payee))
+    (movement
+      from: (account)
+      (arrow)
+      to: (account)
+      (amount))))
