@@ -32,3 +32,12 @@ npx tree-sitter test
 | commodity | uppercase | `GBP` |
 | linked | `+` prefix | `+Income:Salary` |
 | comment | `#` or `;` | `# note` |
+
+## Links
+
+| | |
+|---|---|
+| Documentation | https://h3-tree-sitter-pta.statichost.page/ |
+| Source (Codeberg) | https://codeberg.org/hum3/tree-sitter-pta |
+| Mirror (GitHub) | https://github.com/drummonds/tree-sitter-pta |
+| Docs repo | https://codeberg.org/hum3/tree-sitter-pta-docs |
